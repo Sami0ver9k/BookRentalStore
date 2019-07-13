@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BookRentalStore.Models.Customer>
+
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@if (!Model.Any())
+{
+
+     <text>we dont have any customers</text>
+
+}
+else
+{
+    <div class="align-content-lg-stretch">
+        <table width="1000" class="table-borderless table-hover table-active ">
+
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Package name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var c in Model)
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.ActionLink(c.name, "Details", "Customers", new { id = c.id }, null)
+                        </td>
+
+                        <td> @c.membershiptype.package  </td>
+                    </tr>
+
+                }
+            </tbody>
+
+
+
+
+
+        </table>
+    </div>
+
+}

@@ -1,0 +1,38 @@
+﻿@model BookRentalStore.ViewModels.RandomViewModel
+
+@{
+    
+    ViewBag.Title = "Random book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
+    
+    
+}
+ 
+
+@{var className = Model.customers.Count > 5 ? "popular" : null;
+  
+}
+
+<h2 class="@className"     >
+
+   @Model.book.name
+
+</h2>
+@if(Model.customers.Count==0)
+{
+    <text> no one has the book            </text>
+}
+else
+{
+   <div>
+       
+       @foreach(var c in Model.customers)
+       {  <li>  @c.name    </li>
+       }
+       
+        
+   </div>
+
+}
