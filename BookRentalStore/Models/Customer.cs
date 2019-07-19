@@ -8,11 +8,14 @@ namespace BookRentalStore.Models
 {
     public class Customer
     {
-
-       public int id { get; set; }
         [Required]
+       public int id { get; set; }
+     
       public  string name { get; set; }
+        [Required]
       public bool isSubscribedToNews { get; set; }
+        [Display(Name="Membership package")]
+        [Required]
       public MembershipType membershiptype { get; set; }
       //public byte MembershipTypeId { get; set; }
 

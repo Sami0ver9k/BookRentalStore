@@ -1,17 +1,15 @@
-﻿@model IEnumerable<BookRentalStore.Models.Customer>
-
+﻿@model IEnumerable< BookRentalStore.Models.Book>
 
 @{
-    ViewBag.Title = "Customers";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customers</h2>
-
+<h2>Index</h2>
 @if (!Model.Any())
 {
 
-     <text>we dont have any customers</text>
+    <text>NO books</text>
 
 }
 else
@@ -21,8 +19,8 @@ else
 
             <thead>
                 <tr>
-                    <th>Customer</th>
-                    <th>Package name</th>
+                    <th>BOOK</th>
+                    <th>Genre</th>
                 </tr>
             </thead>
 
@@ -33,10 +31,10 @@ else
                     <tr>
 
                         <td>
-                            @Html.ActionLink(c.name, "Edit", "Customers", new { id = c.id }, null)
+                            @Html.ActionLink(c.name, "Details", "Books", new { id = c.id }, null)
                         </td>
 
-                        <td> @c.membershiptype.package  </td>
+                        <td>@c.genre.name   </td>
                     </tr>
 
                 }
@@ -50,3 +48,5 @@ else
     </div>
 
 }
+
+

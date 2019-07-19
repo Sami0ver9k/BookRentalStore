@@ -4,16 +4,12 @@ using System.Linq;
 using System.Web;
 using BookRentalStore.Models;
 
+
 namespace BookRentalStore.ViewModels
 {
-    public class RandomViewModel
+    public class NewCustomerViewModel
     {
-        public int a = 0;
-        public Book book { get; set; }
-        public Genre genre { get; set; }
-
-
-
-
+        public IEnumerable<MembershipType> membershiptypes { get; set; }
+        public Customer customer { get;  set; }
     }
 }

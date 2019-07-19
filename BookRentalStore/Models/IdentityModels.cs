@@ -12,7 +12,8 @@ namespace BookRentalStore.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Customer> customers { get; set; }
-
+        public DbSet<Book> books { get; set; }
+        public DbSet<MembershipType> membershiptypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection")
        {

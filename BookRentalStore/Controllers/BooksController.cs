@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookRentalStore.Models;
 using BookRentalStore.ViewModels;
+using System.Data.Entity;
 
 namespace BookRentalStore.Controllers
 {
@@ -12,31 +13,38 @@ namespace BookRentalStore.Controllers
     {
         //
         // GET: /Books/
+
         
+        public ApplicationDbContext _context;
+
+        public BooksController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
        
+
         public ViewResult Index()
         {
 
-            var books = GetBook();
+            var books = _context.books.Include(b=>b.genre).ToList();
             return View(books);
 
 
         }
 
-        private IEnumerable<Book> GetBook()
+ 
+
+
+
+        public ActionResult Details(int id)
         {
-           return new List<Book>
-            {
-                new Book {id=1, name="cxpp"},
-                 new Book {id=2, name="csapp"}
-                
-
-
-
-            };
-
+            var books = _context.books.Include(c=> c.genre).SingleOrDefault(c => c.id == id);
+           
+            return View(books);
         }
-   
+
+      
 
 
 	}
